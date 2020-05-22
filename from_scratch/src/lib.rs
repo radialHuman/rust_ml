@@ -185,3 +185,32 @@ where
     let mse: f64 = mean_square_error.to_string().parse().unwrap();
     mse.powf(0.5)
 }
+
+// reading in files for multi column operations
+use std::collections::HashMap;
+use std::fs;
+pub fn read_csv(path: String, columns: i32) -> HashMap<String, Vec<String>> {
+    println!("========================================================================================================================================================");
+    println!("Reading the file ...");
+    let file = fs::read_to_string(&path).unwrap();
+    // making vec (rows)
+    let x_vector: Vec<_> = file.split("\r\n").collect();
+    let rows: i32 = (x_vector.len() - 1) as i32 / columns;
+    println!("Input row count is {:?}", rows);
+    // making vec of vec (table)
+    let table: Vec<Vec<&str>> = x_vector.iter().map(|a| a.split(",").collect()).collect();
+    println!("The header is {:?}", &table[0]);
+    // making a dictionary
+    let mut table_hashmap: HashMap<String, Vec<String>> = HashMap::new();
+    for (n, i) in table[0].iter().enumerate() {
+        let mut vector = vec![];
+        for j in table[1..].iter() {
+            vector.push(j[n]);
+        }
+        table_hashmap.insert(
+            i.to_string(),
+            vector.iter().map(|a| a.to_string()).collect(),
+        );
+    }
+    table_hashmap
+}
