@@ -214,3 +214,84 @@ pub fn read_csv(path: String, columns: i32) -> HashMap<String, Vec<String>> {
     }
     table_hashmap
 }
+
+use std::io::Error;
+pub fn convert_and_impute<U>(
+    list: &Vec<String>,
+    to: U,
+    impute_with: U,
+) -> (Result<Vec<U>, Error>, Vec<usize>)
+where
+    U: std::cmp::PartialEq + Copy + std::marker::Copy + std::string::ToString + std::str::FromStr,
+    <U as std::str::FromStr>::Err: std::fmt::Debug,
+{
+    println!("========================================================================================================================================================");
+    // takes string input and converts it to int or float
+    let mut output: Vec<_> = vec![];
+    let mut missing = vec![];
+    match type_of(to) {
+        "f64" => {
+            for (n, i) in list.iter().enumerate() {
+                if *i != "" {
+                    let x = i.parse::<U>().unwrap();
+                    output.push(x);
+                } else {
+                    output.push(impute_with);
+                    missing.push(n);
+                    println!("Error found in {}th position of the vector", n);
+                }
+            }
+        }
+        "i32" => {
+            for (n, i) in list.iter().enumerate() {
+                if *i != "" {
+                    let string_splitted: Vec<_> = i.split(".").collect();
+                    let ones_digit = string_splitted[0].parse::<U>().unwrap();
+                    output.push(ones_digit);
+                } else {
+                    output.push(impute_with);
+                    missing.push(n);
+                    println!("Error found in {}th position of the vector", n);
+                }
+            }
+        }
+        _ => println!("This type conversion cant be done, choose either int or float type\n Incase of string conversion, use impute_string"),
+    }
+
+    (Ok(output), missing)
+}
+
+pub fn impute_string<'a>(list: &'a mut Vec<String>, impute_with: &'a str) -> Vec<&'a str> {
+    println!("========================================================================================================================================================");
+    list.iter()
+        .enumerate()
+        .map(|(n, a)| {
+            if *a == String::from("") {
+                println!("Missing value found in {}th position of the vector", n);
+                impute_with
+            } else {
+                &a[..]
+            }
+        })
+        .collect()
+}
+
+use std::any::type_name;
+pub fn type_of<T>(_: T) -> &'static str {
+    type_name::<T>()
+}
+
+pub fn unique_values<T>(list: &Vec<T>) -> Vec<T>
+where
+    T: std::cmp::PartialEq + Copy,
+{
+    println!("========================================================================================================================================================");
+    let mut output = vec![];
+    for i in list.iter() {
+        if output.contains(i) {
+        } else {
+            output.push(*i)
+        };
+    }
+    output
+}
