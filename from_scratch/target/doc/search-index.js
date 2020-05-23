@@ -1,0 +1,3 @@
+var searchIndex={};
+searchIndex["from_scratch"] = {"doc":"","i":[[5,"mean","from_scratch","",null,[[["vec"]],["f64"]]],[5,"variance","","",null,[[["vec"]],["f64"]]],[5,"covariance","","",null,[[["vec"]],["f64"]]],[5,"coefficient","","",null,[[["vec"]]]],[5,"simple_linear_regression_prediction","","",null,[[["vec"]],["vec"]]],[5,"root_mean_square","","",null,[[["vec"]],["f64"]]],[5,"read_csv","","",null,[[["string"],["i32"]],[["vec",["string"]],["hashmap",["string","vec"]],["string"]]]],[5,"convert_and_impute","","",null,[[["u"],["vec"]]]],[5,"impute_string","","",null,[[["vec"],["str"]],[["str"],["vec",["str"]]]]],[5,"type_of","","",null,[[["t"]],["str"]]],[5,"unique_values","","",null,[[["vec"]],["vec"]]]],"p":[]};
+addSearchOptions(searchIndex);initSearch(searchIndex);
