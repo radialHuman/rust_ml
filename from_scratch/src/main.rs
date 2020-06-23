@@ -11,10 +11,15 @@ Procedure:
 
 // use simple_ml::*;
 mod linear_regression;
+mod logistic_regression;
 
 fn main() {
-    linear_regression::function(0.20);
-    linear_regression::function(0.25);
-    linear_regression::function(0.30);
-    linear_regression::function(0.35);
+    let mut file = "../../rust/_garage/ccpp.csv".to_string();
+    // linear_regression::function(file.clone(), 0.20);
+    // linear_regression::function(file.clone(), 0.25);
+    // linear_regression::function(file.clone(), 0.30);
+    // linear_regression::function(file.clone(), 0.35);
+
+    file = "../../rust/_garage/data_banknote_authentication.txt".to_string();
+    logistic_regression::function(file.clone(), 0.20, 5, 0.1, 1000, 0.5);
 }
