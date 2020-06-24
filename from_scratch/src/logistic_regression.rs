@@ -1,14 +1,3 @@
-/*
-Aim: To replicate codes from established libraries, books, videos and other sources to get similar results and leanr new things along the way
-
-Procedure:
-* Understand the concept from various sources
-* Understand the codes and its functions
-* Rewrite to get the same result
-* Detailed documentation
-
-*/
-
 use simple_ml::*;
 
 pub fn function(
@@ -25,6 +14,18 @@ pub fn function(
         Book: Trevor Hastie,  Robert Tibshirani, Jerome Friedman - The Elements of  Statistical Learning_  Data Mining, Inference, and Pred
         Article: https://towardsdatascience.com/scale-standardize-or-normalize-with-scikit-learn-6ccc7d176a02
         Library:
+
+        Procedure:
+        1. Prepare data : read, convert, split into 4 parts
+        2. Add new constant 1 column (intercept) in fron to x_train
+        3. Initialize coefficient column
+        4. Calculate log loss cost using sigmoid function's output and actual output
+        5. Reduce log loss using gradient descent
+        6. Predict x_test using new coefficients
+        7. Calculate various metrics using predicted and actual values
+
+        TODO:
+        * 
     */
 
     // read a csv file

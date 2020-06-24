@@ -7,6 +7,13 @@ pub fn function(file_path: String, test_size: f64) {
     Book: Trevor Hastie,  Robert Tibshirani, Jerome Friedman - The Elements of  Statistical Learning_  Data Mining, Inference, and Pred
     Article: https://towardsdatascience.com/regression-an-explanation-of-regression-metrics-and-what-can-go-wrong-a39a9793d914#:~:text=Root%20Mean%20Squared%20Error%3A%20RMSE,value%20predicted%20by%20the%20model.&text=Mean%20Absolute%20Error%3A%20MAE%20is,value%20predicted%20by%20the%20model.
     Library:
+    
+    Procedure:
+    1. Prepare data : read, convert, split into 4 parts
+    2. Add new constant 1 column (intercept) in fron to x_train
+    3. Using the new x_train calculate beta(coefficients) using  (X^T . X)^-1 . X^T . y
+    4. Predict x_test using calculated coefficients
+    5. Calculate various metrics using predicted and actual values
 
     TODO:
     * Whats the role of gradient descent in this?
