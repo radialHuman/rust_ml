@@ -27,11 +27,11 @@ pub fn function(file_path: String, test_size: f64, target_column: usize, k: usiz
     let (columns, values) = read_csv(file_path); // output is row wise
 
     // converting vector of string to vector of f64s
-    let random_data = BLR::float_randomize(&values); // blr needs to be removed
+    let random_data = float_randomize(&values); 
 
     // splitting it into train and test as per test percentage passed as parameter to get scores
     let (x_train, y_train, x_test, y_test) =
-        BLR::preprocess_train_test_split(&random_data, test_size, target_column, ""); // blr needs to be removed
+        preprocess_train_test_split(&random_data, test_size, target_column, ""); 
 
     // now to the main part
     // since it is row wise, conversion
@@ -44,10 +44,10 @@ pub fn function(file_path: String, test_size: f64, target_column: usize, k: usiz
     // predicting values
     let predcited = predict(&train_rows, &y_train, &test_rows, method, k);
     println!("Metrics");
-    BLR::confuse_me(
+    confuse_me(
         &predcited.iter().map(|a| *a as f64).collect::<Vec<f64>>(),
         &y_test,
-    ); // blr needs to be removed
+    ); 
 }
 
 pub fn predict(

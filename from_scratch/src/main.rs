@@ -11,9 +11,12 @@ Procedure:
 
 // use simple_ml::*;
 // mod classification_tree;
+mod kmeans;
+// mod kmedoid;
 mod knn;
 mod linear_regression;
 mod logistic_regression;
+// mod ssvm;
 
 fn main() {
     let mut file = "../../rust/_garage/ccpp.csv".to_string();
@@ -31,6 +34,17 @@ fn main() {
     // knn::function(file.clone(), 0.20, 5, 10, "co");
     // knn::function(file.clone(), 0.20, 5, 10, "ch");
 
+    // file = "../../rust/_garage/ccpp.csv".to_string();
+    // kmeans::function(file.clone(), 5, 1000);
+
+    //============================================================================
+
+    // file = "../../rust/_garage/ccpp.csv".to_string();
+    // kmedoid::function(file.clone(), 5, 1000);
+
     file = "../../rust/_garage/data_banknote_authentication.txt".to_string();
+    // ssvm::function(file.clone(), 0.20, 5);
+
+    // file = "../../rust/_garage/data_banknote_authentication.txt".to_string();
     // classification_tree::function(file.clone(), 0.20,5);
 }
