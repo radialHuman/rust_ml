@@ -16,7 +16,7 @@ mod kmeans;
 mod knn;
 mod linear_regression;
 mod logistic_regression;
-// mod ssvm;
+mod ssvm;
 
 fn main() {
     let mut file = "../../rust/_garage/ccpp.csv".to_string();
@@ -43,7 +43,7 @@ fn main() {
     // kmedoid::function(file.clone(), 5, 1000);
 
     file = "../../rust/_garage/data_banknote_authentication.txt".to_string();
-    // ssvm::function(file.clone(), 0.20, 5);
+    ssvm::function(file.clone(), vec![], 0.20, 0.000001, 5000, 50000.);
 
     // file = "../../rust/_garage/data_banknote_authentication.txt".to_string();
     // classification_tree::function(file.clone(), 0.20,5);
